@@ -2,6 +2,7 @@ install:
 	virtualenv venv
 	venv/bin/python setup.py install
 	venv/bin/python manage.py syncdb --noinput
+	venv/bin/python manage.py migrate
 
 test:
 	rm -rf .tox
@@ -19,3 +20,7 @@ rename:
 	mv outline/manage_outline.py outline/manage_$(name).py
 	mv outline $(name)
 	echo "Great, you're all set! Well, you'll probably want to adjust the setup file by hand a bit."
+
+reqs:
+	venv/bin/pip install -r requirements.txt
+
